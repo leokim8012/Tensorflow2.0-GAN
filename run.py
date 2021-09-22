@@ -75,7 +75,7 @@ def run_training(input_args):
     
     print('=================================================================')
     print(f'Saving Generator model')
-    gan_trainer.save_model(problem)
+    gan_trainer.save_model()
     print(f'Done!')
 
 
@@ -108,13 +108,16 @@ def run_pretrained(input_args):
 
 
     print(f'Making GIF..')
-    visualization.generate_gif_from_images(
-      problem,
-      './outputs/png/',
-      './outputs/gif/'
-    )
     print(f'Done!')
 
+def makeGIF(input_args):
+  problem = input_args.gan_type
+  visualization.generate_gif_from_images(
+    problem,
+    './outputs/png/',
+    './outputs/gif/'
+  )
+      
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -134,6 +137,8 @@ def main():
       run_training(args)
     elif(args.exp == 'PRETRAINED'):
       run_pretrained(args)
+    elif(args.exp == 'GIF'):
+      makeGIF(args)
       
 
 

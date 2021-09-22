@@ -33,12 +33,12 @@ Or you can train by yourself
 ### Image generation
 Vanilla GAN (MNIST)            |  Vanilla GAN (FASHION_MNIST)
 :-------------------------:|:-------------------------:
-...WIP  |  ,,,WIP
+![vanilla_mnist](./documents/VANILLA_MNIST.gif)  |  ...WIP...
 
 
 
 ## Monitoring model training
-...WIP
+...WIP...
 
 ## References
 1. [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)

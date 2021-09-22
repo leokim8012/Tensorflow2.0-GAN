@@ -61,6 +61,13 @@ class GANTrainer:
 
         for self.epoch in epoch_tqdm:
             self.on_epoch_begin()
+
+            visualization.generate_and_save_images(
+                self.generator, 
+                self.generator.model_name + '-Epoch-' + str(self.epoch + 1), 
+                self.SEED
+            )
+
             dataset_tqdm = tqdm(iterable=dataset,desc="Batches",leave=True)
             for batch in dataset_tqdm:
                 self.on_training_step_begin()
@@ -77,10 +84,6 @@ class GANTrainer:
                 dataset_tqdm.set_postfix_str(postfix)
                 dataset_tqdm.refresh()
 
-            visualization.generate_and_save_images(
-                self.generator, 
-                self.generator.model_name + '-Epoch-' + str(self.epoch), 
-                self.SEED)
             self.on_epoch_end()
 
     def on_epoch_begin(self):
