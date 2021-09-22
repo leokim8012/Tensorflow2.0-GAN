@@ -26,11 +26,9 @@ def generate_gif_from_images(
     image_path=os.getcwd() + '/outputs/png/', 
     gif_path=os.getcwd() + '/outputs/gif/'
   ):
-  # filepaths
   fp_in = image_path + '*.png'
   fp_out = gif_path + filename + '.gif'
 
-  # https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html#gif
   img, *imgs = [Image.open(f) for f in sorted(glob.glob(fp_in), key=os.path.getctime)]
   img.save(fp=fp_out, format='GIF', append_images=imgs,
           save_all=True, duration=100, loop=0)

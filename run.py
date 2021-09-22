@@ -93,7 +93,7 @@ def run_pretrained(input_args):
     print(f'Loaded parameters: \n {problem_params}')
 
     print(f'Loading Model..')
-    gan_model = tf.keras.models.load_model('./saved-models/' + problem +'.h5')
+    gan_model = tf.keras.models.load_model('./pretrained-models/' + problem +'.h5')
     gan_model.summary() 
 
     print('=================================================================')
@@ -104,6 +104,14 @@ def run_pretrained(input_args):
       problem + '_TEST', 
       test_input,
       './pretrained-outputs/'
+    )
+
+
+    print(f'Making GIF..')
+    visualization.generate_gif_from_images(
+      problem,
+      './outputs/png/',
+      './outputs/gif/'
     )
     print(f'Done!')
 
