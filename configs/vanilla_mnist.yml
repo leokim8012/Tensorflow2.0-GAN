@@ -1,0 +1,17 @@
+batch_size: 124
+buffer_size: 60000
+num_epochs: 1
+hidden_size: 100
+img_height: 28
+img_width: 28
+num_channels: 1
+learning_rate_generator: 0.0002
+learning_rate_discriminator: 0.0002
+
+save_images_every_n_steps: 5
+
+latent_size: 784
+
+
+noise_dim: 100
+num_examples_to_generate: 16
