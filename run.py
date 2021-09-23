@@ -75,7 +75,7 @@ def run_training(input_args):
     
     print('=================================================================')
     print(f'Saving Generator model')
-    gan_trainer.save_model()
+    gan_trainer.save_model(problem)
     print(f'Done!')
 
 

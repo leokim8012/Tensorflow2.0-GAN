@@ -59,6 +59,10 @@ class GANTrainer:
         global_step = 0
         epoch_tqdm = tqdm(iterable=range(num_epochs),desc="Epochs")
 
+        g_loss = []
+        d_loss = []
+        step_loss =[]
+
         for self.epoch in epoch_tqdm:
             self.on_epoch_begin()
 
@@ -80,6 +84,16 @@ class GANTrainer:
                         self.generator.model_name + '-Step-' + str(self.global_step), 
                         self.SEED
                     )
+                    g_loss.append(losses['generator_loss'].numpy())
+                    d_loss.append(losses['discriminator_loss'].numpy())
+                    step_loss.append(self.global_step)
+
+                    visualization.save_loss_image(
+                        g_loss, 
+                        d_loss,
+                        self.generator.model_name + '-Losses-' + str(self.global_step),
+                        step_loss
+                        )
                 postfix = 'Step: ' + str(self.global_step) + ' | Generator Loss: ' + str(losses['generator_loss'].numpy()) + ' | Discriminator Loss: ' + str(losses['discriminator_loss'].numpy())
                 dataset_tqdm.set_postfix_str(postfix)
                 dataset_tqdm.refresh()
@@ -103,6 +117,6 @@ class GANTrainer:
             c.on_training_step_end(self)
 
 
-    def save_model(self):
+    def save_model(self, name):
         path=os.getcwd() + '/pretrained-models/' 
-        self.generator.model.save(path + self.generator.model_name + '.h5')
+        self.generator.model.save(path + name + '.h5')
