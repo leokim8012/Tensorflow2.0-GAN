@@ -2,14 +2,14 @@ import tensorflow as tf
 
 from layers import losses
 from models import model
-from trainers import Gan_Trainer
+from trainers import gan_trainer
 
 
 import numpy as np
 from matplotlib import pyplot as plt
 
 
-class VanillaGANTrainer(Gan_Trainer.GANTrainer):
+class VanillaGANTrainer(gan_trainer.GANTrainer):
 
     def __init__(
             self,
