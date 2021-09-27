@@ -19,12 +19,12 @@ Now it type of GAN is available such as:
  <b>Pre-trained models</b>
 To test with an existing model:
 
-    $ python3 run.py --exp=PRETRAINED  --gan_type=VANILLA_MNIST
+    $ python3 run.py --exp=PRETRAINED  --problem=VANILLA_MNIST
 
  <b>Training models</b>
 Or you can train by yourself
 
-    $ python3 run.py --exp=TRAIN  --gan_type=VANILLA_MNIST
+    $ python3 run.py --exp=TRAIN  --problem=VANILLA_MNIST
 
 
 
