@@ -1,12 +1,8 @@
 import argparse
 import tensorflow as tf
 
-from datasets import mnist
 from datasets import dataset_factory
-
-from models.generators import vanilla_generator
-from models.discriminators import vanilla_discriminator
-
+from models import model_factory
 from trainers import vanilla_trainer
 
 from utils import config
@@ -15,7 +11,7 @@ from utils import visualization
 
 def run_training(input_args):
 
-    problem = input_args.gan_type
+    problem = input_args.problem
 
     
     print('=================================================================')
@@ -35,54 +31,28 @@ def run_training(input_args):
 
 
     
-    # print('=================================================================')
-    # print(f'Loading Models..')
+    print('=================================================================')
+    print(f'Loading Models..')
     # gan_model = (generator, discriminator) = (Vanilla_Generator.VanillaGenerator(problem_params), Vanilla_Discriminator.VanillaDiscriminator(problem_params))
-    # print(f'Loaded Generatpr: {gan_model[0]}')
-    # print(f'Loaded Discriminator: {gan_model[1]}')
+  
+    gan_model = model_factory.model_factory(problem_params, gan_type, input_args)
+    print(f'Loaded Model: {gan_model}')
+    
+    print('=================================================================')
+    print(f'Start Training..')
+    gan_model.trainer.train(train_dataset, problem_params.num_epochs)
+    print(f'Finish Training')
 
 
     
-    # print('=================================================================')
-    # print(f'Loading Trainer..')
-
-    # generator_optimizer = tf.keras.optimizers.Adam(
-    #   learning_rate=problem_params.learning_rate_generator,
-    #   beta_1=0.5,
-    # )
-    # discriminator_optimizer = tf.keras.optimizers.Adam(
-    #   learning_rate=problem_params.learning_rate_discriminator,
-    #   beta_1=0.5,
-    # )
-
-    # gan_trainer = Vanilla_Trainer.VanillaGANTrainer(
-    #   model_parameters=problem_params,
-    #   generator=gan_model[0],
-    #   discriminator=gan_model[1],
-    #   # training_name=input_args.gan_type,
-    #   generator_optimizer=generator_optimizer,
-    #   discriminator_optimizer=discriminator_optimizer,
-    # )
-    # print(f'Loaded Trainer: {gan_trainer}')
-
-
-    
-    # print('=================================================================')
-    # print(f'Start Training..')
-    # gan_trainer.train(train_dataset, problem_params.num_epochs)
-    # print(f'Finish Training')
-
-
-    
-    # print('=================================================================')
-    # print(f'Saving Generator model')
-    # gan_trainer.save_model(problem)
-    # print(f'Done!')
+    print('=================================================================')
+    print(f'Saving Generator model')
+    gan_model.trainer.save_model(problem)
+    print(f'Done!')
 
 
 def run_pretrained(input_args):
-    problem = input_args.gan_type
-
+    problem = input_args.problem
     
     print('=================================================================')
     print(f'Starting pipeline for, {problem}...')
@@ -112,7 +82,7 @@ def run_pretrained(input_args):
     print(f'Done!')
 
 def makeGIF(input_args):
-  problem = input_args.gan_type
+  problem = input_args.problem
   visualization.generate_gif_from_images(
     problem,
     './outputs/png/',
@@ -128,7 +98,7 @@ def main():
     )
 
     parser.add_argument(
-        '--gan_type',
+        '--problem',
         required=True,
         help='The GAN type',
     )
