@@ -33,13 +33,13 @@ Or you can train by yourself
 ### Image generation
 Vanilla GAN (MNIST)            |  Vanilla GAN (FASHION_MNIST)
 :-------------------------:|:-------------------------:
-![vanilla_mnist](./documents/VANILLA_MNIST_STEP.gif) |  ...WIP...
+![vanilla_mnist](./documents/VANILLA_MNIST_STEP.gif) |  ![vanilla_fashion_mnist](./documents/VANILLA_FASHION_MNIST_STEP.gif) 
 
 
 ### Loss
 Vanilla GAN (MNIST)            |  Vanilla GAN (FASHION_MNIST)
 :-------------------------:|:-------------------------:
-![vanilla_mnist](./documents/VANILLA_MNIST_LOSS.gif) |  ...WIP...
+![vanilla_mnist](./documents/VANILLA_MNIST_LOSS.gif) |  ![vanilla_fashion_mnist](./documents/VANILLA_FASHION_MNIST_STEP.gif) 
 
 
 
