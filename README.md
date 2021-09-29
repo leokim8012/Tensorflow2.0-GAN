@@ -29,6 +29,7 @@ Or you can train by yourself
 
 
 ## Results
+Due to time reasons, the following models have a low number of learning epochs. 
 
 ### Image generation
 Vanilla GAN (MNIST)            |  Vanilla GAN (FASHION_MNIST)
@@ -39,7 +40,7 @@ Vanilla GAN (MNIST)            |  Vanilla GAN (FASHION_MNIST)
 ### Loss
 Vanilla GAN (MNIST)            |  Vanilla GAN (FASHION_MNIST)
 :-------------------------:|:-------------------------:
-![vanilla_mnist](./documents/VANILLA_MNIST_LOSS.gif) |  ![vanilla_fashion_mnist](./documents/VANILLA_FASHION_MNIST_STEP.gif) 
+![vanilla_mnist](./documents/VANILLA_MNIST_LOSS.gif) |  ![vanilla_fashion_mnist](./documents/VANILLA_FASHION_MNIST_LOSS.gif) 
 
 
 
